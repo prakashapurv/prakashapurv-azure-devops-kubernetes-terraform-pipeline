@@ -9,4 +9,19 @@ stages:
   jobs:
   - job: Firstjob
     steps: 
-    - bash: Echo "Build FirstJob"
+    - bash: echo Build FirstJob
+- stage: DevDeploy
+  jobs:
+  - job: Secondjob
+    steps: 
+    - bash: echo DevDeploy SecondJob
+- stage: QaDeploy
+  jobs:
+  - job: Thirdjob
+    steps: 
+    - bash: echo QaDeploy ThirdJob
+- stage: ProdDeploy
+  jobs:
+  - job: Fourthjob
+    steps: 
+    - bash: echo ProdDeploy FourthJob
