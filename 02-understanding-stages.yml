@@ -11,6 +11,9 @@ stages:
     steps: 
     - bash: echo Build FirstJob
     - bash: echo $(PIPELINE_LEVEL_VARIABLE)
+    - bash: echo $(Build.BuildNumber)
+    - bash: echo $(Build.BuildId)
+    - bash: echo $(Build.SourceDirectory)
     variables:
       environment: Dev
 - stage: DevDeploy
