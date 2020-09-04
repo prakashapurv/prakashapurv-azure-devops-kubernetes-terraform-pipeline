@@ -10,6 +10,9 @@ stages:
   - job: Firstjob
     steps: 
     - bash: echo Build FirstJob
+    - bash: echo $(PIPELINE_LEVEL_VARIABLE)
+    variables:
+      environment: Dev
 - stage: DevDeploy
   jobs:
   - job: Secondjob
