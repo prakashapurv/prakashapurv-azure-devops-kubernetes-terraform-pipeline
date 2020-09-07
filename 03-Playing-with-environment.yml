@@ -6,16 +6,46 @@
 trigger:
 - master
 
-strategy:
-  matrix:
-    linux:
-      os: 'ubuntu-latest'
-    mac: 
-      os: 'macos-latest'  #os is a variable
+# strategy:
+#   matrix:
+#     linux:
+#       os: 'ubuntu-latest'
+#     mac: 
+#       os: 'macos-latest'  #os is a variable
 pool:
-  vmImage: $(os)
+  vmImage: 'ubuntu-latest'
 
-steps:
-- script: echo Hello, world from $(os)
-  displayName: 'Run a one-line script'
+stages:
+  - stage: Build
+    jobs:
+      - job: 
+        steps:
+          - bash: echo "Build the server"
+  - stage: DevDeploy
+    # jobs:
+    #   - job:
+    #     steps:
+    #       - bash: echo "Start Dev Deploy"
 
+      - deployment: 
+        environment: Dev
+        strategy:
+         runOnce:
+            deploy:
+              steps:
+                - bash: echo Deploy to Dev
+
+  - stage: AQDeploy
+    # jobs:
+    #   - job:
+    #     steps:
+    #       - bash: echo "Start QA Deploy"
+
+      - deployment: 
+        environment: AQ
+        strategy:
+         runOnce:
+            deploy:
+              steps:
+                - bash: echo Deploy to QA
+          
