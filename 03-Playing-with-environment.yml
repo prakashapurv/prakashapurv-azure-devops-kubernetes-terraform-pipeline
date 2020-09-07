@@ -23,13 +23,13 @@ stages:
           - bash: echo "Build the server"
   - stage: DevDeploy
     jobs:
-    - deployment: DevDeployJob
+    - deployment: Deployment_to_Dev_Environment
       environment: Dev
       strategy:
         runOnce:
           deploy:
             steps:
-              - bash: echo Deploy to Dev
+              - bash: echo deploy to Dev
 
   - stage: QADeploy
     jobs:
