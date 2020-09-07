@@ -13,9 +13,9 @@ strategy:
     mac: 
       os: 'macos-latest'  #os is a variable
 pool:
-  vmImage: $os
+  vmImage: $(os)
 
 steps:
-- script: echo Hello, world from $os
+- script: echo Hello, world from $(os)
   displayName: 'Run a one-line script'
 
