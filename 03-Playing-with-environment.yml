@@ -30,6 +30,7 @@ stages:
           deploy:
             steps:
               - bash: echo deploy to Dev
+              - bash: echo "Welcome to the world of Terraform"
 
   - stage: QADeploy
     jobs:
